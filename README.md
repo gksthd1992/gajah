@@ -1,7 +1,7 @@
 # Hi!  We are Gajah
 ============================
 
-<img src="이미지 URL">
+<img src="https://github.com/gksthd1992/gajah/blob/master/ver12.jpg">
 
 
 
