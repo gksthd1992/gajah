@@ -9,8 +9,8 @@
 original Image + Style Image  
 
 -original  
-<img src="https://github.com/gksthd1992/gajah/blob/master/ver11.jpg" width =300 height = 400>
-
+<img src="https://github.com/gksthd1992/gajah/blob/master/ver11.jpg" width =300 height = 400 transform: rotate( 45deg )>
+ 
 -style  
 <img src="https://github.com/gksthd1992/gajah/blob/master/ver12.jpg" width =300 height = 400>
 
