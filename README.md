@@ -1,7 +1,9 @@
 # Hi!  We are Gajah
 ============================  
 
-Image Transfer  
+단국대학교 오픈소스 기여 프로젝트  
+
+# Image Transfer  
 original Image + Style Image  
 
 -original  
