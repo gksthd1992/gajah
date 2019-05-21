@@ -4,10 +4,10 @@
 
 <img src="https://github.com/gksthd1992/gajah/blob/master/img/1.png" >    
 
-
+-------------------------------------------------------------------------
 <img src="https://github.com/gksthd1992/gajah/blob/master/img/2.png" >    
 
-
+-------------------------------------------------------------------------
 <img src="https://github.com/gksthd1992/gajah/blob/master/img/3.png" >    
 
 
