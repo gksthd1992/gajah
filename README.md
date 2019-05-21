@@ -7,7 +7,6 @@
 
 # Reference :
 
-============================
 image transfer : https://github.com/log0/neural-style-painting
 
 
