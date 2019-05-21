@@ -9,7 +9,7 @@
 original Image + Style Image  
 
 -original  
-<img src="https://github.com/gksthd1992/gajah/blob/master/ver11.jpg" width =300 height = 400 >
+<img src="https://github.com/gksthd1992/gajah/blob/master/ver11.jpg" width =300 height = 400 progid:DXImageTransform.Microsoft.BasicImage(rotation=1)>
  
 -style  
 <img src="https://github.com/gksthd1992/gajah/blob/master/ver12.jpg" width =300 height = 400>
