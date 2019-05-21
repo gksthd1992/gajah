@@ -2,23 +2,32 @@
 =====================================
 
 
-<img src="https://github.com/gksthd1992/gajah/blob/master/img/1.png" >  
+<img src="https://github.com/gksthd1992/gajah/blob/master/img/1.png" >    
 
-<img src="https://github.com/gksthd1992/gajah/blob/master/img/2.png" >  
 
-<img src="https://github.com/gksthd1992/gajah/blob/master/img/3.png" >  
+<img src="https://github.com/gksthd1992/gajah/blob/master/img/2.png" >    
 
-<img src="https://github.com/gksthd1992/gajah/blob/master/img/4.png" >  
 
-<img src="https://github.com/gksthd1992/gajah/blob/master/img/5.png">  
+<img src="https://github.com/gksthd1992/gajah/blob/master/img/3.png" >    
 
-<img src="https://github.com/gksthd1992/gajah/blob/master/img/6.png" >  
 
-<img src="https://github.com/gksthd1992/gajah/blob/master/img/7.png" >  
+<img src="https://github.com/gksthd1992/gajah/blob/master/img/4.png" >    
 
-<img src="https://github.com/gksthd1992/gajah/blob/master/img/8.png" >  
 
-<img src="https://github.com/gksthd1992/gajah/blob/master/img/9.png">  
+<img src="https://github.com/gksthd1992/gajah/blob/master/img/5.png">    
 
-<img src="https://github.com/gksthd1992/gajah/blob/master/img/10.png" >  
+
+<img src="https://github.com/gksthd1992/gajah/blob/master/img/6.png" >    
+
+
+<img src="https://github.com/gksthd1992/gajah/blob/master/img/7.png" >    
+
+
+<img src="https://github.com/gksthd1992/gajah/blob/master/img/8.png" >    
+
+
+<img src="https://github.com/gksthd1992/gajah/blob/master/img/9.png">    
+
+
+<img src="https://github.com/gksthd1992/gajah/blob/master/img/10.png" >    
 
