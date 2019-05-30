@@ -65,6 +65,7 @@ enter_sat = int(input("채도를 입력하세요 (-100 ~ 100): "))
 print(enter_sat)
 
 middle = cv2.cvtColor(img_hsv, cv2.COLOR_HSV2BGR)
+img_change = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 imgplot = plt.imshow(middle)
 plt.show()
 def change_saturation(width,height,img_hsv,enter_sat):
