@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+
+
+<html>
+   <head>
+       <title> button </title>
+
+       <meta charset = "utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="How to create an image upload form without page refresh using Bootstrap, jQuery AJAX and PHP.">
+    <meta name="author" content="ShinDarth">
+
+    <title>GAJAH</title>
+
+    <link rel="icon" href="11.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <style>body { padding-top:50px; }.navbar-inverse .navbar-nav > li > a { color: #DBE4E1; }</style>
+
+    <!--[if IE]>
+
+      <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+      <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+      <script src="test.js"></script>
+
+    <![endif]-->
+	</head>
+	<body>
+    <form action="a.html">
+
+        <b>object images</b></br></br></br>
+        <!-- img 출력 -->
+        </br></br>
+        <div>
+
+        <b>which one you want to choose?</b></br>
+        <form>
+        <!-- 입력 받기 -->
+        <p> 입력 : <input id="number" type="text" name="id" value="">
+            <input type="button" id="hw" value="제출" >
+
+            <!-- <input type="button" name="b1" value="제출" >
+            <input type="submit" id="button_joinus" value="가입하기" disabled="">
+            submit != button-->
+        </p><button type="button" onclick="location.href='get_object_for_html.py' ">회원가입</button>
+        </form>
+
+        <!-- <input type = “button” id=”b1″ value=”1″>  -->
+    <a href="hello_world.py?ver=1">Click me</a>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+            <script src="test.js?ver=1"></script>
+        </div>
+        <!-- <input type="button" name="btn2" value="버튼2" onclick="alert('Hi~~!!')">-->
+    </form>
+
+
+	</body>
+</html>
