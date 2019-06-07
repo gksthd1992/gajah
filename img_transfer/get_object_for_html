@@ -67,6 +67,7 @@ def combine_two(input1, input2):
     # 합쳐진 이미지를 원본 이미지에 추가.
     img2[0:rows, 0:cols] = dst
 
+
     plt.imshow(img2)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
