@@ -25,15 +25,21 @@
       <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
       <script src="http://code.jquery.com/jquery-latest.js"></script>
 
-      <script src="test.js"></script>
+      <script src="test.js?ver=1"></script>
+      <script src="enterobject.js?ver=1"></script>
 
     <![endif]-->
 	</head>
 	<body>
     <form action="a.html">
 
-        <b>object images</b></br></br></br>
+        <!--<button type="button" onclick="location.href='get_object_for_html.py' ">create objects</button>-->
+        <b>object images</b></br>
+        <input type="button" id="makeob" value="create object!" >
+
         <!-- img 출력 -->
+
+
         </br></br>
         <div>
 
@@ -41,12 +47,12 @@
         <form>
         <!-- 입력 받기 -->
         <p> 입력 : <input id="number" type="text" name="id" value="">
-            <input type="button" id="hw" value="제출" >
+
 
             <!-- <input type="button" name="b1" value="제출" >
             <input type="submit" id="button_joinus" value="가입하기" disabled="">
             submit != button-->
-        </p><button type="button" onclick="location.href='get_object_for_html.py' ">회원가입</button>
+        <input type="button" id="enternum" value="확인" >
         </form>
 
         <!-- <input type = “button” id=”b1″ value=”1″>  -->
@@ -54,6 +60,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
             <script src="test.js?ver=1"></script>
+            <script src="enterobject.js?ver=1"></script>
+
         </div>
         <!-- <input type="button" name="btn2" value="버튼2" onclick="alert('Hi~~!!')">-->
     </form>
