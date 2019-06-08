@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 import cv2
+import os
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -31,8 +32,8 @@ name = ["input/ret0.jpg",
         "input/ret13.jpg"]
 
 form = cgi.FieldStorage()
-contentsImage = form["input_num"].value
-print(contentsImage)
+number_img = int(form["input_num"].value)
+store_name = "input/middle.jpg"
 
 input_im = "input/opencv_ori.jpg"
 
@@ -185,13 +186,37 @@ def obj_wartershed(input_im,want):
 def make_obj_img(input, ret) :
     for i in range(ret):
         obj_wartershed(input,i+1)
+def get_total_ret(input_im):
+    img = cv2.imread(input_im)
+    img = cv2.resize(img, dsize=(300, 400))
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    ret, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
+
+    kernel = np.ones((3, 3), np.uint8)
+    opening = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, kernel, iterations=2)
+
+    sure_bg = cv2.dilate(opening, kernel, iterations=3)
+
+    dist_transform = cv2.distanceTransform(opening, cv2.DIST_L2, 5)
+    ret, sure_fg = cv2.threshold(dist_transform, 0.5 * dist_transform.max(), 255, 0)
+    sure_fg = np.uint8(sure_fg)
+
+    unknown = cv2.subtract(sure_bg, sure_fg)
+
+    ret, markers = cv2.connectedComponents(sure_fg)
+    return ret
+
 
 #img = load_image(input_im)
 #original = load_image(input_im)
 #img = cv2.imread(input_im)
 #original = cv2.imread(input_im)
-
 #wartershed(input_im)
 #make_obj_img(input_im,4)
-
 #combine_two(get_object,mix_img)
+total_ret = get_total_ret(input_im)
+img = cv2.imread(name[number_img])
+cv2.imwrite(store_name, img)
+
+for i in  range(total_ret):
+    os.remove(name[i+1])
