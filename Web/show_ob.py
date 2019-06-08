@@ -40,7 +40,6 @@ name = ["C:\Bitnami\wampstack-7.1.29-0\apache2\htdocs\input\ret0.jpg",
         "C:\Bitnami\wampstack-7.1.29-0\apache2\htdocs\input\ret5.jpg",
         "C:\Bitnami\wampstack-7.1.29-0\apache2\htdocs\input\ret6.jpg",
         "C:\Bitnami\wampstack-7.1.29-0\apache2\htdocs\input\ret7.jpg"]
-
 """
 name = ["input/ret0.jpg",
         "input/ret1.jpg",
@@ -88,7 +87,6 @@ def wartershed(input_im):
     """
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-
     print(ret)
     # markers==1 이면 배경
     ret = int(ret)
@@ -135,7 +133,6 @@ def obj_wartershed(input_im,want):
     """
     cv2.waitKey(0)
     cv2.destroyAllWindows()
-
     print(ret)
     # markers==1 이면 배경
     ret = int(ret)
