@@ -10,90 +10,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 import cv2
-
-"""
-import urllib.request
-url = "127.0.0.1/enterobject.html"
-def request(url):
-    response = urllib.request.urlopen(url)
-    byte_data = response.read()
-    text_data = byte_data.decode('utf-8')
-    print(text_data)
-request(url)
-"""
-
-input_im = "input/opencv_ori.jpg"
-img2 = cv2.imread(input_im)
-cv2.imwrite('input/Final.jpg', img2)
-
-print("hello world")
-
-import cgi
-import os
+import requests
+from bs4 import BeautifulSoup
 import json
 import sys
 
-animal = {'type':'cat', 'age':12}
-as_json = json.dumps(animal)
-
-print(type(animal))  # prints '<class 'dict'>'
-print(type(as_json))  # prints '<class 'str'>'
-print(as_json)
-# now back again
-as_object = json.loads(as_json)
-print(type(as_object))  # prints '<class 'dict'>'
-print(animal[0])
-sys.exit(1)
-
-
-var_php = -1
-if __name__ == '__main__':
-    try:
-        data = json.loads(sys.argv[1])
-        print(data)
-        var_php = data
-
-    except:
-        print("ERROR")
-        sys.exit(1)
-
-print(data)
-
-"""
-var_php = -1
-
-if __name__ == '__main__':
-    try:
-        data = json.loads(sys.argv[1])
-        print("hello")
-        var_php = data
-
-
-    except:
-        print("ERROR")
-        sys.exit(1)
-
-
-print (data)
-"""
-OUTPUT_DIR = 'input/output11/'
-MEAN_VALUES = np.array([123.68, 116.779, 103.939]).reshape((1,1,1,3))
-
-get_object = "input/get_object.jpg"
-mix_img = "input/opencv.jpg"
-water = "input/water.jpg"
-total_ret = 0
-"""
-name = ["C:\Bitnami\wampstack-7.1.29-0\apache2\htdocs\input\ret0.jpg",
-        "C:\Bitnami\wampstack-7.1.29-0\apache2\htdocs\input\ret1.jpg",
-        "C:\Bitnami\wampstack-7.1.29-0\apache2\htdocs\input\ret2.jpg",
-        "C:\Bitnami\wampstack-7.1.29-0\apache2\htdocs\input\ret3.jpg",
-        "C:\Bitnami\wampstack-7.1.29-0\apache2\htdocs\input\ret4.jpg",
-        "C:\Bitnami\wampstack-7.1.29-0\apache2\htdocs\input\ret5.jpg",
-        "C:\Bitnami\wampstack-7.1.29-0\apache2\htdocs\input\ret6.jpg",
-        "C:\Bitnami\wampstack-7.1.29-0\apache2\htdocs\input\ret7.jpg"]
-
-"""
 name = ["input/ret0.jpg",
         "input/ret1.jpg",
         "input/ret2.jpg",
@@ -101,7 +22,27 @@ name = ["input/ret0.jpg",
         "input/ret4.jpg",
         "input/ret5.jpg",
         "input/ret6.jpg",
-        "input/ret7.jpg"]
+        "input/ret7.jpg",
+        "input/ret8.jpg",
+        "input/ret9.jpg",
+        "input/ret10.jpg",
+        "input/ret11.jpg",
+        "input/ret12.jpg",
+        "input/ret13.jpg"]
+
+form = cgi.FieldStorage()
+contentsImage = form["input_num"].value
+print(contentsImage)
+
+input_im = "input/opencv_ori.jpg"
+
+OUTPUT_DIR = 'input/output11/'
+MEAN_VALUES = np.array([123.68, 116.779, 103.939]).reshape((1,1,1,3))
+
+get_object = "input/get_object.jpg"
+mix_img = "input/opencv.jpg"
+water = "input/water.jpg"
+total_ret = 0
 
 def combine_two(input1, input2):
     # combine_two( wartershed(img),original)
@@ -161,7 +102,7 @@ def wartershed(input_im):
     unknown = cv2.subtract(sure_bg, sure_fg)
 
     ret, markers = cv2.connectedComponents(sure_fg)
-    print("the ret is ",ret)
+    #print("the ret is ",ret)
     total_ret = ret
     markers = markers + 1
     markers[unknown == 255] = 0
@@ -211,7 +152,7 @@ def obj_wartershed(input_im,want):
     unknown = cv2.subtract(sure_bg, sure_fg)
 
     ret, markers = cv2.connectedComponents(sure_fg)
-    print("the ret is ", ret)
+    #print("the ret is ", ret)
     total_ret = ret
     markers = markers + 1
     markers[unknown == 255] = 0
@@ -251,5 +192,6 @@ def make_obj_img(input, ret) :
 #original = cv2.imread(input_im)
 
 #wartershed(input_im)
-make_obj_img(input_im,4)
+#make_obj_img(input_im,4)
+
 #combine_two(get_object,mix_img)
