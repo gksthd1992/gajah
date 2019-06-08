@@ -175,4 +175,3 @@ def get_total_ret(input_im):
 total_ret = get_total_ret(input_im)
 make_obj_img(input_im,total_ret)
 print(total_ret)
-
