@@ -62,8 +62,9 @@ print('''<!DOCTYPE html>
       <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-    
+
   <body>
+
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -93,13 +94,30 @@ print('''<!DOCTYPE html>
             <h2 style = "color:rgb(0,0,255)"> Enjoy your Picture!! </h2>
             
             <img class="img-fluid mb-3 mb-lg-0" src="ART123.jpg" alt="">
- 
-          </div>
-        </div>
+         </div>
       </div>
-    
+    </div>
+
+    <div class="container">
+        <h1 class="page-header">Part Image Transfer</h1>
+
+        <form action="middle.py">
+            <h1 class="lead">Contents Image: </h1>
+            <p><input type="text" name="Contents" size="20" placeholder = "ex) myFace.jpg ..."></p>
+            <h1 class="lead">Style Image:</h1>
+            <p><input type="text" name="Style" size="20" placeholder = "ex) Ss.jpg ..."></p>
+            <p class="lead"> Are you sure? </p>
+            <p><input type = "submit"></p>
+            <p></p>
+
+        </form>
+        <p class="lead"> </p>
+        <p class="lead">  </p>
+    </div>
+      <h1 class="page-header">Come Back GAJAH Main</h1>
+      <a href = "create.py">  Click~!</a>    
   </head>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="upload-image.js"></script>
 </html>'''
