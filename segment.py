@@ -13,7 +13,6 @@ hist = 1.0*hist/np.sum(hist)
 val_max = -999
 thr = -1
 for t in range(1,255):
-    # Non-efficient implementation
     q1 = np.sum(hist[:t])
     q2 = np.sum(hist[t:])
     m1 = np.sum(np.array([i for i in range(t)])*hist[:t])/q1
@@ -28,8 +27,7 @@ print("Threshold: {}".format(thr))
 
 plt.subplot(131)
 plt.imshow(ims)
-#plt.subplot(132)
-#plt.hist(im_flat, bins=256, range=(0, 255))
+
 plt.subplot(133)
 plt.imshow(im > thr, cmap = 'gray')
 plt.show()
