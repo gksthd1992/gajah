@@ -1,6 +1,5 @@
-#아직 미완성본! 
-#기존에 있던 알고리즘을 사용하여 우리 프로젝트의 목적에 맞게 수정하고 함수 및 코드들을 추가해서 만드는 중
-
+#Image Transfer 완성본!
+#기존에 있던 알고리즘을 사용하여 우리 프로젝트의 목적에 맞게 수정하고 함수 및 코드들을 추가해서 만들었다.
 
 #라이브러러 준비
 import os
@@ -9,31 +8,29 @@ import sys
 import numpy as np
 import scipy.io
 import scipy.misc
-import tensorflow as tf  #텐져플로우 라이브러리
+import tensorflow as tf  # 텐져플로우 라이브러리 준비
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import imshow
 from PIL import Image
 #%matplotlib inline
 
-#------------이미지 준비 과정
-# 완성 이미지 저장공간
+#----------------------------이미지 준비 과정
+# 완성본 디렉토리 위치
 OUTPUT_DIR = 'output11/'
-# 원하는 스타일의 이미지 이름
+# 스타일 이미지의 이름
 STYLE_IMAGE = 'Ss.jpg'
-# 원하는 이미지 선택
+# 콘텐츠 이미지(바꿀이미지)의 이름.
 CONTENT_IMAGE = 'OPENCV (1).jpg'
-
-#이미지 크기 설정
+# Image dimensions constants.
 IMAGE_WIDTH = 300
 IMAGE_HEIGHT = 400
 COLOR_CHANNELS = 3
-
-#오픈CV관련 이미지
+#오픈CV
 img = CONTENT_IMAGE
 original = "art.jpg"
 
-#---------openCV과정관련 함수
-def combine_two(input1, input2):#두 이미지 결합 함수
+#----------------------------openCV과정
+def combine_two(input1, input2):
     # combine_two( wartershed(img),original)
     # original이 원본 , img = 변한 화면
     # img1 = cv2.imread(input1, -1)#검은배경화면
@@ -41,17 +38,21 @@ def combine_two(input1, input2):#두 이미지 결합 함수
     img1 = cv2.imread(input1)
     img2 = cv2.imread(input2)
 
-    # 사진 크기 조절(dsize를 통해 완성 이미지의 사이즈 조절 가능)
+    # 사진 크기 조절
     img1 = cv2.resize(img1, dsize=(300, 400))
     img2 = cv2.resize(img2, dsize=(300, 400))
 
+    rows, cols, channels = (img1.shape)
 
-'''
-pesudo code!!
+    roi = img2[0:rows, 0:cols]
 
-배경이 검은색 부분은 이미지 결합시 투명하게 만들어주는 코드를 넣을 생각이다.
+    img2gray = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+    ret, mask = cv2.threshold(img2gray, 10, 255, cv2.THRESH_BINARY)
 
-'''
+    mask_inv = cv2.bitwise_not(mask)
+
+    img1_fg = cv2.bitwise_and(img1, img1, mask=mask)
+    img2_bg = cv2.bitwise_and(roi, roi, mask=mask_inv)
 
     # 2개의 이미지를 합치면 바탕은 제거되고 logo부분만 합쳐짐.
     dst = cv2.add(img1_fg, img2_bg)
@@ -63,15 +64,15 @@ pesudo code!!
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     cv2.waitKey(0)
-    
     # 중간 파일 제거
     os.remove('middle.jpg')
+
     # 마지막 파일 저장
     cv2.imwrite('Final.jpg', img2)
 
-#이미지 내의 객체의 Edge를 구별하고 배경을 색칠하는 함수
-def wartershed(input_im): 
-    img = cv2.imread(input_im) 
+
+def wartershed(input_im):
+    img = cv2.imread(input_im)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     ret, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
 
@@ -86,13 +87,12 @@ def wartershed(input_im):
 
     unknown = cv2.subtract(sure_bg, sure_fg)
 
-'''
-pseudo code!!
-이미지 내에 객체별로 레이어 값을 붙여 원하는 부분 
-즉 원하는 레이어를 선택하여 부분 합성에 이용
+    ret, markers = cv2.connectedComponents(sure_fg)
+    markers = markers + 1
+    markers[unknown == 255] = 0
 
-'''
-
+    markers = cv2.watershed(img, markers)
+    img[markers == -1] = [0, 0, 0]
 
     cv2.waitKey(0)
     cv2.destroyAllWindows()
@@ -111,18 +111,75 @@ pseudo code!!
 
 #-------------------------IMAGE TRANSFER 조절
 NOISE_RATIO = 0.6
+# Constant to put more emphasis on content loss.
 BETA = 5
+# Constant to put more emphasis on style loss.
 ALPHA = 100
-#위에 α/β값이 작아질수록 content보다는 style에 더 치중된 결과
-
-# 다운받은 vgg_ model의 이름을 VGG_MODEL에 넣는다
+# Path to the deep learning model. This is more than 500MB so will not be
+# included in the repository, but available to download at the model Zoo:
+# Link: https://github.com/BVLC/caffe/wiki/Model-Zoo
+#
+# Pick the VGG 19-layer model by from the paper "Very Deep Convolutional
+# Networks for Large-Scale Image Recognition".
 VGG_MODEL = 'imagenet-vgg-verydeep-19.mat'
-
-#reshape
+# The mean to subtract from the input to the VGG model. This is the mean that
+# when the VGG was used to train. Minor changes to this will make a lot of
+# difference to the performance of model.
 MEAN_VALUES = np.array([123.68, 116.779, 103.939]).reshape((1,1,1,3))
 
 #-------------------------IMAGE TRANSFER VGG MODEL 준비
 def load_vgg_model(path):
+    """
+    Returns a model for the purpose of 'painting' the picture.
+    Takes only the convolution layer weights and wrap using the TensorFlow
+    Conv2d, Relu and AveragePooling layer. VGG actually uses maxpool but
+    the paper indicates that using AveragePooling yields better results.
+    The last few fully connected layers are not used.
+    Here is the detailed configuration of the VGG model:
+        0 is conv1_1 (3, 3, 3, 64)
+        1 is relu
+        2 is conv1_2 (3, 3, 64, 64)
+        3 is relu
+        4 is maxpool
+        5 is conv2_1 (3, 3, 64, 128)
+        6 is relu
+        7 is conv2_2 (3, 3, 128, 128)
+        8 is relu
+        9 is maxpool
+        10 is conv3_1 (3, 3, 128, 256)
+        11 is relu
+        12 is conv3_2 (3, 3, 256, 256)
+        13 is relu
+        14 is conv3_3 (3, 3, 256, 256)
+        15 is relu
+        16 is conv3_4 (3, 3, 256, 256)
+        17 is relu
+        18 is maxpool
+        19 is conv4_1 (3, 3, 256, 512)
+        20 is relu
+        21 is conv4_2 (3, 3, 512, 512)
+        22 is relu
+        23 is conv4_3 (3, 3, 512, 512)
+        24 is relu
+        25 is conv4_4 (3, 3, 512, 512)
+        26 is relu
+        27 is maxpool
+        28 is conv5_1 (3, 3, 512, 512)
+        29 is relu
+        30 is conv5_2 (3, 3, 512, 512)
+        31 is relu
+        32 is conv5_3 (3, 3, 512, 512)
+        33 is relu
+        34 is conv5_4 (3, 3, 512, 512)
+        35 is relu
+        36 is maxpool
+        37 is fullyconnected (7, 7, 512, 4096)
+        38 is relu
+        39 is fullyconnected (1, 1, 4096, 4096)
+        40 is relu
+        41 is fullyconnected (1, 1, 4096, 1000)
+        42 is softmax
+    """
     vgg = scipy.io.loadmat(path)
 
     vgg_layers = vgg['layers']
@@ -213,7 +270,12 @@ def content_loss_func(sess, model):
         return (1 / (4 * N * M)) * tf.reduce_sum(tf.pow(x - p, 2))
     return _content_loss(sess.run(model['conv4_2']), model['conv4_2'])
 
-#사용할 레이어
+#-----------------------------------------
+# Layers to use. We will use these layers as advised in the paper.
+# To have softer features, increase the weight of the higher layers
+# (conv5_1) and decrease the weight of the lower layers (conv1_1).
+# To have harder features, decrease the weight of the higher layers
+# (conv5_1) and increase the weight of the lower layers (conv1_1).
 STYLE_LAYERS = [
     ('conv1_1', 0.5),
     ('conv2_1', 1.0),
@@ -222,7 +284,6 @@ STYLE_LAYERS = [
     ('conv5_1', 4.0),
 ]
 
-#스타일 이미지의 손실계산
 def style_loss_func(sess, model):
     """
     Style loss function as defined in the paper.
@@ -254,7 +315,7 @@ def style_loss_func(sess, model):
     loss = sum([W[l] * E[l] for l in range(len(STYLE_LAYERS))])
     return loss
 
-#------------------------노이지 이미지 생성
+#------------------------
 def generate_noise_image(content_image, noise_ratio = NOISE_RATIO):
     """
     Returns a noise image intermixed with the content image at a certain ratio.
@@ -267,7 +328,6 @@ def generate_noise_image(content_image, noise_ratio = NOISE_RATIO):
     input_image = noise_image * noise_ratio + content_image * (1 - noise_ratio)
     return input_image
 
-#이미지 저장함수
 def load_image(path):
     image = scipy.misc.imread(path)
     # Resize the image for convnet input, there is no change but just
@@ -277,7 +337,6 @@ def load_image(path):
     image = image - MEAN_VALUES
     return image
 
-#이미지 저장 함수
 def save_image(path, image):
     # Output should add back the mean.
     image = image + MEAN_VALUES
@@ -331,7 +390,6 @@ train_step = optimizer.minimize(total_loss)
 #----------------------------------
 sess.run(tf.initialize_all_variables())
 sess.run(model['input'].assign(input_image))
-
 #---------------------------------- 반복 횟수 지정
 ITERATIONS = 1000
 
