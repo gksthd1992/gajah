@@ -18,6 +18,7 @@ ob_name[7] = "input/ret7.jpg";
 
 $(document).ready(function(){
 makeob.addEventListener('click',function(){
+
     $.ajax({
      type: 'POST',
      url: "show_ob.py?ver=1",
@@ -58,4 +59,3 @@ makeob.addEventListener('click',function(){
 
      });
 });
-
