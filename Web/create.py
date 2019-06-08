@@ -41,7 +41,7 @@ print('''<!DOCTYPE html>
           <a class="navbar-brand" href="#">GAJAH</a>
         </div>
 
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse"></div>
 
         </div><!--.nav-collapse -->
       </div>
@@ -61,7 +61,7 @@ print('''<!DOCTYPE html>
           </div>
         </div>
       </div>
-
+    </div>
       <!-- Header -->
    <header class="masthead">
     <div class="container d-flex h-100 align-items-center">
@@ -144,8 +144,6 @@ print('''<!DOCTYPE html>
 
             <p><input type = "submit"></p>
             <p></p>
-            <h1 class="lead"> **Part Trans: </h1>
-            <p><input type = "submit"></p>
 
         </form>
         <p class="lead">  <span id="max-size"></span></p>
