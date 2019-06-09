@@ -35,7 +35,7 @@ print('''<!DOCTYPE html>
     <title>GAJAH</title>
     <link rel="icon" href="11.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">    
     <style>body { padding-top:50px; }.navbar-inverse .navbar-nav > li > a { color: #DBE4E1; }</style>
     <!--[if IE]>
       <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -66,13 +66,13 @@ print('''<!DOCTYPE html>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Mixing</a></li>
+             <li class="static"><a href = "index.html"> Come Back GAJAH Main</a>  </li>  
           </ul>
         </div><!--.nav-collapse -->
       </div>
     </nav>
 
-      <h1 class="page-header" a href = "create.py">Come Back GAJAH Main</h1>
-      <a href = "create.py">  Click</a>    
+   
     <div class="container">
       <!-- Featured Project Row -->
       <div class="row align-items-center no-gutters mb-4 mb-lg-5">
@@ -96,15 +96,17 @@ print('''<!DOCTYPE html>
           <p><input type = "text" name = "input_num" size="20" placeholder = "ex) 1,2,3...">
           <input type = "submit" ></p></br></br></br></br></br></br>
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="makeobject.js?ver=1"></script>
         <!-- <input type="button" name="btn2" value="버튼2" onclick="alert('Hi~~!!')">-->
     </form>
+
   </head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="upload-image.js"></script>
+    
+
 </html>'''
       )
