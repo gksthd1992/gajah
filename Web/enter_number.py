@@ -154,6 +154,7 @@ print('''<!DOCTYPE html>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Mixing</a></li>
+            <li class="static"><a href = "index.html"> Come Back GAJAH Main</a>  </li>
           </ul>
         </div><!--.nav-collapse -->
       </div>
@@ -172,28 +173,24 @@ print('''<!DOCTYPE html>
       </div>
     </div>
 
-##-----------------------채도 명도 부분 아직 미완성-------------------
-<form method="GET" action="sample.php">
-  <div>
-      <label> Chroma: </label>
+<h1 class="page-header">CHROMA & BRIGHTNESS </h1>
+<form  method="GET" action="ChromaBrightTest.py">
+  <div class="container">
+      <a> CHROMA & BRIGHTNESS </a>
+      <h1 class="lead"> Chroma : </h1>
       <input type="range" name="points" min="-100" max="100"
-step="1" value="0" oninput="document.getElementById('value1').innerHTML=this.value;">
-      <span id="value1"></span>
-      <input type="submit" value="submit2">
-  </div>
-  <div>
-      <label> brightness: </label>
-      <input type="range" name="points" min="-100" max="100"
-step="1" value="0" oninput="document.getElementById('value2').innerHTML=this.value;">
-      <span id="value2"></span>
-      <input type="submit" value="submit2">
+        step="1" value="0" oninput="document.getElementById('chroma').innerHTML=this.value;">
+     
+      <span id="chroma"></span>
+      <h1 class="lead"> Brightness : </h1>
+      <input type="range" name="points2" min="-100" max="100"
+        step="1" value="0" oninput="document.getElementById('brightness').innerHTML=this.value;">
+      <span id="brightness"></span>
+      <p><input type="submit"></p>
   </div>
 </form>
 
-##-----------------------채도 명도 부분 아직 미완성-------------------
 
-      <h1 class="page-header">Come Back GAJAH Main</h1>
-      <a href = "create.py">  Click~!</a>    
   </head>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
