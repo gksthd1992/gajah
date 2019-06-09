@@ -18,11 +18,12 @@ original Image + Style Image
 <img src="https://github.com/gksthd1992/gajah/blob/master/완성본.jpg" width =300 height = 400>
 
 
-# 진행 순서
+# 웹 진행 순서
 1.Index.html 
-2.Create_process.py 
-3.enter_number.py 
-4.Final.py
+->2.RGB.py
+->3.process_create.py
+->4.enter_number.py 
+->5.ChromaBrightTest.py
 
 
 # Reference :
