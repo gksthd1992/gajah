@@ -19,11 +19,11 @@ original Image + Style Image
 
 
 # 웹 진행 순서
-1.Index.html 
-->2.RGB.py
-->3.process_create.py
-->4.enter_number.py 
-->5.ChromaBrightTest.py
+1.Index.html  
+->2.RGB.py  
+->3.process_create.py  
+->4.enter_number.py  
+->5.ChromaBrightTest.py  
 
 a
 # Reference :
