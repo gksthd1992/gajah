@@ -25,7 +25,7 @@ original Image + Style Image
 3.객체를 보기 원한다면 ->enter_number.py, 객체 SKIP하려면 ->enter_number2.py  
 4.명암/대비를 보기 원한다면->ChromaBrightTest.py, 명암 대비 SKIP하려면 ChromaBrightSkip.py  
 
-a
+
 # Reference :
 
 image transfer : https://github.com/log0/neural-style-painting  
