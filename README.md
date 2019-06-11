@@ -20,10 +20,10 @@ original Image + Style Image
 
 # 웹 진행 순서
 1.Index.html  
-->2.RGB.py  
-->3.process_create.py  
-->4.enter_number.py  
-->5.ChromaBrightTest.py  
+2.RGB 표 보기 원한다면-> RGB.py
+ ->process_create.py  
+3.객체를 보기 원한다면 ->enter_number.py, 객체 SKIP하려면 ->enter_number2.py  
+4.명암/대비를 보기 원한다면->ChromaBrightTest.py, 명암 대비 SKIP하려면 ChromaBrightSkip.py  
 
 a
 # Reference :
