@@ -18,9 +18,10 @@ StyleImage = form["Style"].value
 # 이름으로 불러온  사진 준비
 Contents2 = cv2.imread(contentsImage)
 
+
 Contents2 = cv2.resize(Contents2, dsize=(500, 600))
 cv2.imwrite('ART123.jpg', Contents2)
-#
+
 
 
 # 완성된 사진 출력 화면
@@ -39,6 +40,7 @@ print('''<!DOCTYPE html>
     <!--[if IE]>
       <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+
       <script src="makeobject.js?ver=1"></script>
       <script src="https://cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
@@ -70,6 +72,7 @@ print('''<!DOCTYPE html>
       </div>
     </nav>
 
+   
     <div class="container">
       <!-- Featured Project Row -->
       <div class="row align-items-center no-gutters mb-4 mb-lg-5">
@@ -77,29 +80,41 @@ print('''<!DOCTYPE html>
         <div class="mx-auto text-center">
             <h1 style = "color:rgb(255,0,0)"> Congratulations~!! </h1>
             <h2 style = "color:rgb(0,0,255)"> Enjoy your Picture!! </h2>
+
             <img class="img-fluid mb-3 mb-lg-0" src="ART123.jpg" alt="">
          </div>
       </div>
     </div>
+     <form action="enter_number2.py">
+            <b><h1 style = "color:rgb(0,0,0)">DO YOU WANT TO SKIP?</b></br>
+            <a href = "enter_number2.py">
+                  
+                  <input type = "submit" value ="SKIP" >
+            </a href>
+      </form>
+      
     <form action="a.html">
         <b><h1 style = "color:rgb(0,0,0)">part image transfer</b></br>
         <input type="button" id="makeob" value="create object!!" >
     </form>
-        <b><h1 style = "color:rgb(0,0,0)">which one you want to choose?</b>
-        </br>(if you do not want part image transfer, enter -1)</br>
-        
+        </br></br>
+
+        <b><h1 style = "color:rgb(0,0,0)">which one you want to choose?</b></br>
     <form action="enter_number.py">
           <p><input type = "text" name = "input_num" size="20" placeholder = "ex) 1,2,3...">
           <input type = "submit" ></p></br></br></br></br></br></br>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="makeobject.js?ver=1"></script>
         <!-- <input type="button" name="btn2" value="버튼2" onclick="alert('Hi~~!!')">-->
     </form>
+
   </head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <script src="upload-image.js"></script>
+    
 
 </html>'''
       )
