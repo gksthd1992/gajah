@@ -16,8 +16,9 @@ StyleImage = form["Style"].value
 # print(contentsImage,"hi",  StyleImage)
 
 # 이름으로 불러온  사진 준비
-Contents2 = cv2.imread(contentsImage)
-
+Contents2 = cv2.imread(StyleImage)
+Contents1 = cv2.imread(contentsImage)
+cv2.imwrite('input/for_ob.jpg',Contents1)
 
 Contents2 = cv2.resize(Contents2, dsize=(500, 600))
 cv2.imwrite('ART123.jpg', Contents2)
