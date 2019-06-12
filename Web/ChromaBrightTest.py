@@ -23,37 +23,26 @@ points2 = int(form["points2"].value)
 # 참고 : https://bradbury.tistory.com/64
 
 # 이미지 파일을 읽어온다
-img = mpimg.imread("Final.jpg", cv2.IMREAD_COLOR)
+img1 = cv2.imread("Final.jpg", cv2.IMREAD_COLOR)
+img2 = cv2.imread("Final.jpg", cv2.IMREAD_COLOR)
 
+cv2.imwrite('middle.jpg', img1)
 
-height = img.shape[0]
-width = img.shape[1]
-channels = img.shape[2]
+height = img1.shape[0]
+width = img1.shape[1]
+channels = img1.shape[2]
 
 # BGR to HSV 변환
-img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-#print(img_hsv[399][1])
-#imgplot = plt.imshow(img_hsv)
+img_hsv1 = cv2.cvtColor(img1, cv2.COLOR_BGR2HSV)
+img_hsv2 = cv2.cvtColor(img2, cv2.COLOR_BGR2HSV)
 
-plt.show()
-
-# img_result = cv2.bitwise_and(img, img, img_hsv)
-# imgplot = plt.imshow(img_result)
-# plt.show()
-middle = cv2.cvtColor(img_hsv, cv2.COLOR_HSV2BGR)
-#imgplot = plt.imshow(middle)
-#plt.show()
-
+img_result1 = cv2.cvtColor(img_hsv1, cv2.COLOR_HSV2BGR)
+img_result2 = cv2.cvtColor(img_hsv2, cv2.COLOR_HSV2BGR)
 enter_sat = points
-#print(enter_sat)
-
-middle = cv2.cvtColor(img_hsv, cv2.COLOR_HSV2BGR)
-img_change = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-#imgplot = plt.imshow(middle)
-#plt.show()
-
+enter_value = points2
 
 def change_saturation(width, height, img_hsv, enter_sat):
+    img_change = cv2.cvtColor(img1, cv2.COLOR_BGR2HSV)
     for x in range(width - 1):
         for i in range(height - 1):
             if (enter_sat < 0):
@@ -63,47 +52,27 @@ def change_saturation(width, height, img_hsv, enter_sat):
             # img_change[i][x][1] = img_hsv[i][x][1] + img_hsv[i][x][1] * enter_sat
             img_change[i][x][0] = img_hsv[i][x][0]
             img_change[i][x][2] = img_hsv[i][x][2]
-
-    #imgplot = plt.imshow(img_change)
-    #plt.show()
-
     img_result = cv2.cvtColor(img_change, cv2.COLOR_HSV2BGR)
-    #imgplot = plt.imshow(img_result)
-    #plt.show()
-
     cv2.imwrite('Final_sat.jpg', img_result)
 
-
-change_saturation(width, height, img_hsv, enter_sat)
-
-#enter_value = int(input("명도를 입력하세요 (-100 ~ 100): "))
-#print(enter_value)
-enter_value = points2
-#print(enter_value)
-
 def change_value(width, height, img_hsv, enter_value):
+    img_change = cv2.cvtColor(img2, cv2.COLOR_BGR2HSV)
     for x in range(width - 1):
         for i in range(height - 1):
             if (enter_value < 0):
                 img_change[i][x][0] = img_hsv[i][x][0] - img_hsv[i][x][0] * (abs(enter_value) / 100)
             if (enter_value >= 0):
                 img_change[i][x][0] = img_hsv[i][x][0] + img_hsv[i][x][0] * (enter_value / 100)
-            # img_change[i][x][1] = img_hsv[i][x][1] + img_hsv[i][x][1] * enter_sat
             img_change[i][x][2] = img_hsv[i][x][2]
             img_change[i][x][1] = img_hsv[i][x][1]
 
-    #imgplot = plt.imshow(img_change)
-    #plt.show()
-
     img_result = cv2.cvtColor(img_change, cv2.COLOR_HSV2BGR)
-    imgplot = plt.imshow(img_result)
-    #plt.show()
-
     cv2.imwrite('Final_value.jpg', img_result)
 
 
-change_value(width, height, img_hsv, enter_value)
+change_saturation(width, height, img_hsv1, enter_sat)
 
+change_value(width, height, img_hsv2, enter_value)
 
 print('CHROMA : ')
 print(enter_sat)
