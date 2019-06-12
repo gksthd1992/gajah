@@ -12,7 +12,7 @@ original Image + Style Image
 ===========================  
 
 -original     
-<img src="https://github.com/gksthd1992/gajah/blob/master/ver11.jpg" width =200 height = 300> + <img src="https://github.com/gksthd1992/gajah/blob/master/ver12.jpg" width =200 height = 300> + <img src="https://github.com/gksthd1992/gajah/blob/master/완성본.jpg" width =200 height = 300>
+<img src="https://github.com/gksthd1992/gajah/blob/master/ver11.jpg" width =200 height = 300>
 
 -style  
 <img src="https://github.com/gksthd1992/gajah/blob/master/ver12.jpg" width =200 height = 300>
