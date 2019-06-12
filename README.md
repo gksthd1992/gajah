@@ -4,13 +4,13 @@
   
  DKU Open Source SW Contribution Project  
 ============================  
-
+<img src="https://github.com/gksthd1992/gajah/blob/master/img/11.png" width =800 height = 400><img src="https://github.com/gksthd1992/gajah/blob/master/img/12.png" width =800 height = 400><img src="https://github.com/gksthd1992/gajah/blob/master/img/13.png" width =800 height = 400><img src="https://github.com/gksthd1992/gajah/blob/master/img/14.png" width =800 height = 400>
 
 -Image Transfer  
 original Image + Style Image  
 
 -original  
-<img src="https://github.com/gksthd1992/gajah/blob/master/ver11.jpg" width =300 height = 400><img src="https://github.com/gksthd1992/gajah/blob/master/ver12.jpg" width =300 height = 400>
+<img src="https://github.com/gksthd1992/gajah/blob/master/ver11.jpg" width =300 height = 400> 
 
 -style  
 <img src="https://github.com/gksthd1992/gajah/blob/master/ver12.jpg" width =300 height = 400>
