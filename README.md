@@ -1,5 +1,5 @@
 # Hi!  We are Gajah!
-============================  
+ 
 <img src="https://github.com/gksthd1992/gajah/blob/master/img/image.png" width =800 height = 400>  
   
  DKU Open Source SW Contribution Project  
