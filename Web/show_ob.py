@@ -12,7 +12,7 @@ import numpy as np
 import cv2
 
 
-input_im = "input/opencv_ori.jpg"
+input_im = "input/for_ob.jpg"
 img2 = cv2.imread(input_im)
 cv2.imwrite('input/Final.jpg', img2)
 
@@ -48,7 +48,13 @@ name = ["input/ret0.jpg",
         "input/ret4.jpg",
         "input/ret5.jpg",
         "input/ret6.jpg",
-        "input/ret7.jpg"]
+        "input/ret7.jpg",
+        "input/ret8.jpg",
+        "input/ret9.jpg",
+        "input/ret10.jpg",
+        "input/ret11.jpg",
+        "input/ret12.jpg",
+        "input/ret13.jpg"]
 
 def wartershed(input_im):
     img = cv2.imread(input_im)
